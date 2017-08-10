@@ -23,6 +23,7 @@ from setuptools import find_packages, setup
 
 import tensorboard.version
 
+_VERSION = tensorboard.version.VERSION.replace('-', '') + 'a3'
 
 REQUIRED_PACKAGES = [
     'numpy >= 1.11.0',
@@ -46,9 +47,9 @@ CONSOLE_SCRIPTS = [
 ]
 
 setup(
-    name='tensorflow-tensorboard',
-    version=tensorboard.version.VERSION.replace('-', ''),
-    description='TensorBoard lets you watch Tensors Flow',
+    name='cloud-tpu-tensorboard',
+    version=_VERSION,
+    description='TensorBoard to be used in Cloud TPU environment.',
     long_description='',
     url='http://tensorflow.org/',
     author='Google Inc.',
