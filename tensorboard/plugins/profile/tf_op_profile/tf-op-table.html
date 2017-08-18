@@ -99,9 +99,7 @@ limitations under the License.
     <span class="time">{{_percent(node.metrics.time)}}</span>
     <span class="disclosure" style="{{_paddingDisclosure(level)}}"></span>
     <span class="name">{{node.name}}</span>
-    <template is="dom-if" if="[[_hasProvenance(node)]]">
-      <span>{{_provenance(node)}}</span>
-    </template>
+    <span>{{_provenance(node)}}</span>
   </div>
   <div class="children">
     <template is="dom-repeat" items="{{node.children}}" sort="_sortEntry">
@@ -206,12 +204,9 @@ Polymer({
     }
   },
   _percent: percent,
-  _hasProvenance: function(node) {
-    return Boolean(node.xla && node.xla.provenance);
-  },
   _provenance: function(node) {
-    return this._hasProvenance(node)
-                ? node.xla.provenance.replace(/^.*\//, '') : "";
+    return (node.xla && node.xla.provenance)
+              ? node.xla.provenance.replace(/^.*\//, '') : "";
   },
 });
 
